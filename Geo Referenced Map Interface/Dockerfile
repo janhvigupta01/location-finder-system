@@ -21,6 +21,10 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN npm install && npm run build
 
+# Copy environment configuration
+RUN cp .env.example .env
+
+# Generate application key
 RUN php artisan key:generate
 
 EXPOSE 10000
