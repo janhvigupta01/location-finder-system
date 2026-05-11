@@ -21,10 +21,13 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN npm install && npm run build
 
-# Copy environment configuration
+# Create .env file
 RUN cp .env.example .env
 
-# Generate application key
+# Create SQLite database file
+RUN touch database/database.sqlite
+
+# Generate Laravel app key
 RUN php artisan key:generate
 
 EXPOSE 10000
