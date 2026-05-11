@@ -27,8 +27,11 @@ RUN cp .env.example .env
 # Create SQLite database file
 RUN touch database/database.sqlite
 
-# Generate Laravel app key
+# Generate application key
 RUN php artisan key:generate
+
+# Run database migrations
+RUN php artisan migrate --force
 
 EXPOSE 10000
 
